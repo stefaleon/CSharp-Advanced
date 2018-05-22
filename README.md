@@ -91,3 +91,13 @@ Then various objects that had been registered as event subscribers, raise the ev
 * Each "messaging service" class implements **an override for the *OnVideoEncoded* method**.
 
 * If the appropriate event handler declarations (**subscriptions**) are present, the various calls to the *OnVideoEncoded* overrides will be executed as the *VideoEncoded* event gets raised by the subscribers.
+
+
+
+
+## 05 EXTENSION METHODS
+
+
+- Extension methods enable you to **"add" methods to existing types without creating a new derived type, recompiling, or otherwise modifying the original type**.
+
+- Extension methods are a special kind of **static** method, but they are **called as if they were instance methods on the extended type**. For client code written in C#, F# and Visual Basic, there is no apparent difference between calling an extension method and the methods that are actually defined in a type. 
