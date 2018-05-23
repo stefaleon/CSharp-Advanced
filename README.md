@@ -100,4 +100,54 @@ Then various objects that had been registered as event subscribers, raise the ev
 
 - Extension methods enable you to **"add" methods to existing types without creating a new derived type, recompiling, or otherwise modifying the original type**.
 
-- Extension methods are a special kind of **static** method, but they are **called as if they were instance methods on the extended type**. For client code written in C#, F# and Visual Basic, there is no apparent difference between calling an extension method and the methods that are actually defined in a type. 
+- Extension methods are a special kind of **static** method, but they are **called as if they were instance methods on the extended type**. For client code written in C#, F# and Visual Basic, there is no apparent difference between calling an extension method and the methods that are actually defined in a type.
+
+
+## 06 LINQ
+
+
+#### LINQ Extension Methods
+
+* returns `IEnumerable<out T>`, T is Book
+
+```
+var cheapBooks = books
+                .Where(b => b.Price < 20);
+```
+
+* returns `IOrderedEnumerable<TElement>`, a sorted sequence
+
+```
+var cheapBooks = books
+                .Where(b => b.Price < 20)
+                .OrderBy(b => b.Title);
+```
+
+* returns `IEnumerable<out T>`, here T is s string
+
+```
+var cheapBooksStrings = books
+                .Where(b => b.Price < 20)
+                .OrderBy(b => b.Title)
+                .Select(b => b.Title);  
+```
+
+* Single, SingleOrDefault, First, FirstOrDefault, Last, LastOrDefault
+
+* Skip, Take
+
+* Count, Sum, Max, Min, Average ...
+
+* ... [Supported and Unsupported LINQ Methods (LINQ to Entities)](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/ef/language-reference/supported-and-unsupported-linq-methods-linq-to-entities)
+
+
+
+#### LINQ Query Operators
+
+```
+var cheapBooksWithQuery =
+                from b in books
+                where b.Price < 20
+                orderby b.Title
+                select b;
+```
