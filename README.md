@@ -151,3 +151,36 @@ var cheapBooksWithQuery =
                 orderby b.Title
                 select b;
 ```
+
+
+
+## 07 NULLABLE TYPES
+
+* We cannot assign null to Value types. If this is what we want, we can use the *Nullable* generic structure.
+
+```
+//DateTime dateTime = null; // ERROR
+
+Nullable<DateTime> dateTime = null; // OK
+
+// short syntax
+DateTime? dateTime2 = null;
+```
+
+* Preferred way to get the value of a nullable is by using **GetValueOrDefault()**.
+
+* **GetValueOrDefault()** can also be used in order to assign a value from a nullable to a non nullable.
+
+* **Null coalescing operator ??**:
+
+```
+DateTime date5 = date4 ?? DateTime.Today;
+```
+
+this translates to "if date4 is null assign today to date5"
+
+it is actually a shortened version of
+
+```
+DateTime date5 = (date4 != null) ? date4.GetValueOrDefault() : DateTime.Today;
+```
